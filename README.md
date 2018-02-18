@@ -29,3 +29,6 @@ The App:
 - Export notes button will export as a csv
 
 - click the add note button to add a new note. 
+
+
+Total time taken: 3hrs 20mins
