@@ -3,4 +3,5 @@ export class Note {
     edit: boolean = false;
     text: string = '';
     warning: boolean = false; 
+    archived: boolean = false;
   }

@@ -32,6 +32,29 @@ img {
   color:red;
 }
 
+.search-filter{
+  padding:  10px;
+  margin-left: 5vw;
+  margin-bottom:10px;
+  background: #FFF;
+  overflow: hidden;
+  display: inline-block;
+  color: #525252;
+  font-weight: 300;
+  -webkit-border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+  -moz-border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+  border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+  -webkit-box-shadow: 0 0 5px rgba(123, 123, 123, 0.2);
+  -moz-box-shadow: 0 0 5px rgba(123,123,123,.2);
+  box-shadow: 0 0 5px rgba(123, 123, 123, 0.2);
+  border: solid 1px #DADADA;
+  font-family: 'helvetica neue',arial;
+  position: relative;
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+
 .no-warning{
   color:grey;
 }
@@ -66,7 +89,6 @@ img {
 }
 
 @media only screen and (max-width: 500px) {
-
 .note {
   background: lightyellow;
   box-shadow:#999 1px 1px 3px;
@@ -139,6 +161,11 @@ img {
   border-top: red groove 2px;
   width:100%;
   height:200px;
+}
+
+.important-check{
+  font-size: larger;
+  padding: 15px;
 }
 
 .handwriting{

@@ -10,17 +10,17 @@ import { StorageService } from './services/storage-service';
 })
 export class AppComponent {
   notes = [new Note()];
-
+  filterCheck = 0;
   constructor(private storageService: StorageService, private exportService: ExportService) {
     let notesCheck;
     notesCheck = this.storageService.read<Array<Note>>('notes');
-    if(notesCheck){
+    if (notesCheck) {
       this.notes = notesCheck;
     }
     console.log(notesCheck);
   }
 
-  addNote(){
+  addNote() {
     let newNote;
     newNote = new Note();
     newNote.createdOn = new Date();
@@ -36,14 +36,30 @@ export class AppComponent {
       this.notes.splice(i, 1);
     }
 
-      this.update();
+    this.update();
   };
 
   update() {
     this.storageService.write("notes", this.notes);
   };
 
+  archive(note) {
+    if (note.archived == false) {
+      var r = confirm("Are you sure you want to archive this note?");
+      if (r == true) {
+        note.archived = true;
+      }
+    }
+    else {
+      var r = confirm("Are you sure you want to undo the archive of this note?");
+      if (r == true) {
+        note.archived = false;
+      }
+    }
+    this.update();
+  }
+
   download() {
-    this.exportService.downloadCSV("notesexport.csv",this.notes);
+    this.exportService.downloadCSV("notesexport.csv", this.notes);
   }
 }

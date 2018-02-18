@@ -5,11 +5,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { StorageService } from './services/storage-service';
+import { NoteFilterPipe } from './filters/note.pipe';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NoteFilterPipe
   ],
   imports: [
     BrowserModule,

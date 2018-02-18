@@ -1,26 +1,36 @@
 <h1 class="header web-note-title handwriting">WebNote</h1>
 <div>
   <div>
-  
     <span class="icon-container">
-    <i class="fa fa-download fa-2x small-padding" (click)="download()"> Export Notes </i>
-    <i class="fa fa-plus-circle fa-2x small-padding" (click)="addNote()"> Add Note </i>
-      </span>
-      <div style="text-align: center;">
-    <div class="note" *ngFor="let note of notes; let i = index">
-      <span class="date">{{note.createdOn | date : short}}</span>
-      <span class="icons">
-      <i class="fa fa-warning fa-lg" (click)="note.warning = !note.warning" [ngClass]="note.warning? 'warning-color': 'no-warning'"></i>
-      <i class="fa fa-check fa-lg" *ngIf="note.edit == false"></i>
-      <i class="fa fa-pencil fa-lg" *ngIf="note.edit == true"></i>
-      <i class="fa fa-trash-o fa-lg" (click)="delete(notes.length - $index - 1)"></i></span>
-      <div [ngClass]="note.warning ? 'note-groove-warning': 'note-groove'">
-          <textarea class="handwriting" [ngClass]="note.edit ? 'editable-note' : 'non-editable-note' " rows="4" cols="50" [(ngModel)]="note.text" (focus)="note.edit = true" (blur)="note.edit = false; update();">
+      <i class="fa fa-download fa-2x small-padding" (click)="download()"> Export Notes </i>
+      <i class="fa fa-plus-circle fa-2x small-padding" (click)="addNote()"> Add Note </i>
+      <div class="important-check">
+        Search for : 
+        <select class="search-filter" [(ngModel)]="filterCheck">
+            <option [value]="0">All Open</option>
+            <option [value]="1">Important Only</option>
+            <option [value]="2">Archived Only</option>
+        </select>
+      </div>
+    </span>
+    <div style="text-align: center;">
+      <div class="note" *ngFor="let note of notes | notefilter:filterCheck; let i = index">
+        <span class="date">{{note.createdOn | date : short}}</span>
+        <span class="icons">
+            <i class="fa fa-book fa-lg" (click)="archive(note); update();"></i>
+          <i class="fa fa-warning fa-lg" (click)="note.warning = !note.warning; update();" [ngClass]="note.warning? 'warning-color': 'no-warning'"></i>
+          <i class="fa fa-check fa-lg" *ngIf="note.edit == false"></i>
+          <i class="fa fa-pencil fa-lg" *ngIf="note.edit == true"></i>
+          <i class="fa fa-trash-o fa-lg" (click)="delete(notes.length - $index - 1)"></i>
+        </span>
+        <div [ngClass]="note.warning ? 'note-groove-warning': 'note-groove'">
+          <textarea class="handwriting" [ngClass]="note.edit ? 'editable-note' : 'non-editable-note' " rows="4" cols="50" [(ngModel)]="note.text"
+            (focus)="note.edit = true" (blur)="note.edit = false; update();">
               {{ note.text }}
               </textarea>
-      </div>
-        
-      </div>
+        </div>
+
       </div>
     </div>
   </div>
+</div>
