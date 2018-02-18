@@ -28,6 +28,14 @@ img {
   padding: 10px;
 }
 
+.warning-color{
+  color:red;
+}
+
+.no-warning{
+  color:grey;
+}
+
 .web-note-title{
   width: 100%;
   text-align: center;
@@ -123,6 +131,12 @@ img {
 
 .note-groove{
   border-top: lightgoldenrodyellow groove 2px;
+  width:100%;
+  height:200px;
+}
+
+.note-groove-warning{
+  border-top: red groove 2px;
   width:100%;
   height:200px;
 }
